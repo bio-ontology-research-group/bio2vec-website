@@ -16,7 +16,6 @@ vector = params.vector
 dataset = params.dataset
 //println params
 url = 'http://ontolinator.kaust.edu.sa:9200/'
-http = new HTTPBuilder(url)
 
 println " { \"data\" : "+new JsonBuilder(similar(vector, dataset))+"}"
 
@@ -53,8 +52,9 @@ def similar(def vector, def dataset) {
     def jsonSlurper = new JsonSlurper()
     def js = new JsonBuilder(jsonSlurper.parseText(query))
     def t
+    http = new HTTPBuilder(url)
     http.post( path: '/bio2vec/data/_search', requestContentType : JSON, body: js.toPrettyString() ) { resp, reader -> t = reader }
-    //http.shutdown()
+    http.shutdown()
     def rmap = []
     t.hits.hits.each { hit ->
       def row = []

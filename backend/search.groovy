@@ -15,7 +15,7 @@ response.contentType = 'application/json'
 def q = params.term
 
 //println "hello"
-url = 'http://10.254.145.46:9200/'
+url = 'http://localhost:9200/'
 http = new HTTPBuilder(url)
 
 println new JsonBuilder(search(q))
