@@ -26,6 +26,9 @@ def startServer() {
   context.addServlet(GroovyServlet, '/dataset.groovy')
   context.addServlet(GroovyServlet, '/graph.groovy')
   context.addServlet(GroovyServlet, '/SearchId.groovy')
+  context.addServlet(GroovyServlet, '/simgraph.groovy')
+  context.addServlet(GroovyServlet, '/detailedSearch.groovy')
+  context.addServlet(GroovyServlet, '/getSim.groovy')
   context.setAttribute('version', '0.1')
 
   FilterHolder cors = context.addFilter(CrossOriginFilter.class,"/*",EnumSet.of(DispatcherType.REQUEST))

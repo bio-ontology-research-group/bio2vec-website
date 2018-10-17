@@ -40,4 +40,20 @@ def search(def id) {
   //println js
   http.post( path: '/bio2vec/dataset/_search', requestContentType : JSON, body: js.toString() ) { resp, reader -> t = reader }
   return t.hits.hits
+
+  def rmap=[]
+t.hits.hits.each { hit ->
+      def row = []
+      
+      
+      row << hit._source.dataset_name
+      row << hit._source.description
+      row << hit._source.experiment.original_dataset
+      row << hit._source.
+      row<< hit._source
+      rmap << row
+    }
+    //rmap
+  
+
 }

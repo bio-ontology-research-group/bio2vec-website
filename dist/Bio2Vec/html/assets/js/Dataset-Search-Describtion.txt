@@ -1,0 +1,18 @@
+Lod4ML_uniprot_human
+The UniProt RDF (human subset) graph embeddings
+
+bio-knowledge-graph
+Graphs embeddings covering multiple resources
+
+Lod4ML_mesh
+The Mesh RDF graph embedings
+
+Lod4ML_uniprot_disease
+The UniProt - diseases RDF (human subset) graph embeddings
+
+
+full_text_embeddings
+
+
+PPI_Network_graph
+Protein-protein interactions graph embeddings

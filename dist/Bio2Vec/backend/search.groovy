@@ -28,15 +28,16 @@ def search(def id) {
   def fres2 = null
   def query = """
  {
+    
     "suggest": {
         "entity" : {
             "prefix" : "$id", 
             "completion" : { 
-                "field" : "name"
+                "field" : "name",
+                "size":1000
             }
         }
-    },
-    "size":10
+    }
 }"""
 
 
@@ -47,35 +48,25 @@ def search(def id) {
   //println js
   http.post( path: '/bio2vec/_search', requestContentType : JSON, body: js.toString() ) { resp, reader -> t = reader }
   //println t.suggest.entity.options.text
-  //return t
+  
   //.suggest.entity.options
+  
   http.shutdown()
+
     def rmap = []
     t.suggest.entity.options.each { hit ->
 
       hit.each { op ->
+         //println op.text
         def row = []
-      //row<<hit
-      //def rid = hit._source.id
       row << op.text
-      //row << op._source.name
-      row << op._source.id
-      row << op._source.dataset_name
-      row<<op._id
-      row<<op._source['@model_factor']
+     
 
       rmap << row
       }
-      //def row = []
-      //row<<hit
-      //def rid = hit._source.id
-      /*row << hit.text
-      row << hit._source.id
-      row << hit._source.dataset_name
-      row<<hit._id*/
-      //row << hit._score
-      //row<< hit.options._id
+     
       
     }
-    rmap
+    rmap.unique{ it[0]}
+
 }

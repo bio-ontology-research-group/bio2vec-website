@@ -46,3 +46,6 @@ def search(def id,def dataset) {
   http.post( path: '/bio2vec/_search', requestContentType : JSON, body: js.toString() ) { resp, reader -> t = reader }
   return t.hits.hits
 }
+
+
+
